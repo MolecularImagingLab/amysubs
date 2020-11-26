@@ -6,9 +6,9 @@ def main():
     import os
     import sys
     # Set up ssh connection
-    host = 'enter host ip here'
-    user = 'enter username here'
-    psswrd = 'enter password here'
+    host = '10.156.156.23'
+    user = 'rami'
+    psswrd = 'Fearcond123!'
     ssh_client = paramiko.SSHClient()
     ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     ssh_client.connect(hostname = host, username = user, password = psswrd)
@@ -31,7 +31,10 @@ def main():
     ftp_client.get(regqc_path,local_copy)
     print("Placed in:",local_copy)
     ## fetch files for segmentation QC
-    files = {'nu.mgz':'/mri/nu.mgz', 'T2.FSspace.mgz':'/mri/T2.FSspace.mgz','lh.seg.mgz':'/mri/lh.hippoAmygLabels-T1-T2.v21.FSvoxelSpace.mgz','rh.seg.mgz':'/mri/rh.hippoAmygLabels-T1-T2.v21.FSvoxelSpace.mgz'}
+    files = {'nu.mgz':'/mri/nu.mgz', 'T2.FSspace.mgz':'/mri/T2.FSspace.mgz',
+             'lh.seg.mgz':'/mri/lh.hippoAmygLabels-T1-T2.v21.FSvoxelSpace.mgz',
+             'rh.seg.mgz':'/mri/rh.hippoAmygLabels-T1-T2.v21.FSvoxelSpace.mgz'
+            'aseg.mgz':'/mri/aseg.mgz'}
     for file in files.keys():
         segqc_path = root+subject_id+files[file]
         out_name = file
